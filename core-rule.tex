@@ -1,0 +1,605 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{\texorpdfstring{《七肢桶之视》
+}{《七肢桶之视》 }}\label{ux4e03ux80a2ux6876ux4e4bux89c6}
+
+\subsection{\texorpdfstring{\emph{Heptapod Sight}
+}{Heptapod Sight }}\label{heptapod-sight}
+
+\begin{quote}
+A Tabletop Role-Playing Game of Foreknown Love
+\end{quote}
+
+\emph{``目的与方法，本是一体。''} ------ 灵感源自 Ted
+Chiang《你一生的故事》
+
+\textbf{Warning}\\
+\textbf{免责声明}\\
+本项目为非官方同人创作，与作者 Ted
+Chiang、其代理人或任何版权持有方无任何 affiliation。\\
+规则文本采用
+\textbf{\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA
+4.0}} 许可（见文末）。\\
+你可自由使用、改编、分发------只需署名并以相同方式共享。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{目录}\label{ux76eeux5f55}
+
+\begin{itemize}
+\item
+  \hyperref[-ux5f15ux8a00ux8fd9ux4e0dux662fux6e38ux620fux800cux662fux4e00ux573aux7ea6ux5b9a]{引言：这不是游戏，而是一场约定}
+\item
+  \hyperref[-ux89d2ux8272ux521bux5efaux7ec7ux547dux4e09ux95ee]{角色创建：织命三问}
+\item
+  \hyperref[-ux6838ux5fc3ux673aux5236ux53ccux8f68ux884cux8fdb]{核心机制：双轨行进}
+\item
+  \hyperref[-ux8bedux8a00ux5373ux4eeaux5f0fux521dux8bedux7cfbux7edf]{语言即仪式：初语系统}
+\item
+  \hyperref[-ux5f15ux5bfcux8005ux4e4bux827a]{引导者之艺}
+\item
+  \hyperref[-ux9644ux5f55ux5febux901fux53c2ux8003ux5361]{附录：快速参考卡}
+\item
+  \hyperref[-ux8bb8ux53efux4e0eux81f4ux8c22]{许可与致谢}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍
+引言：这不是游戏，而是一场约定}\label{ux258d-ux5f15ux8a00ux8fd9ux4e0dux662fux6e38ux620fux800cux662fux4e00ux573aux7ea6ux5b9a}
+
+\begin{quote}
+\emph{``学习七肢桶语言，不是为了预测未来------而是为了，在看见终点后，依然能迈出第一步。''}
+\end{quote}
+
+《七肢桶之视》是一套\textbf{实验性桌面角色扮演游戏（TRPG）规则}，探索一个悖论：\\
+\textbf{当你已看见自己的一生------包括所有欢愉与痛楚------你是否仍愿开始？}
+
+这不是关于``改变命运''，而是关于\textbf{拥抱命运}；\\
+不是模拟世界如何运作，而是体验\textbf{人如何与已知的结局共处}。
+
+\subsubsection{✦ 适合谁？}\label{ux2726-ux9002ux5408ux8c01}
+
+\begin{itemize}
+\item
+  想尝试\textbf{无战斗、高情感密度}TRPG 的玩家
+\item
+  文学/哲学爱好者，尤爱特德·姜、村上春树、是枝裕和
+\item
+  2--4 人小团体（1 名引导者 + 1--3 名叙述者）
+\item
+  60--120 分钟的短团（One-shot）或系列微团（Mini-Campaign）
+\end{itemize}
+
+\subsubsection{✦ 你需要}\label{ux2726-ux4f60ux9700ux8981}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+物品 & 说明 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+纸与笔 & 每人至少 1 张；\textbf{手写是仪式的一部分} \\
+3 枚 d6 & 或使用 \href{https://roll20.net/}{Roll20} / Discord
+\texttt{/roll\ 3d6} \\
+一个安静空间 & 光线柔和，无打扰；建议开场前静默 1 分钟 \\
+一颗心 & 明知结局，仍愿赴约 \\
+\end{longtable}
+}
+
+\textbf{Note}\\
+\textbf{术语说明}
+
+\begin{itemize}
+\item
+  \textbf{叙述者（Narrator）}：玩家；非``扮演角色''，而是``重述一段已知的生命''
+\item
+  \textbf{引导者（Guide）}：原 GM；不掌控剧情，只协助记忆浮现
+\item
+  \textbf{环视力（Circular Sight）}：资源点；象征``接纳命运的勇气''
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍
+角色创建：织命三问}\label{ux258d-ux89d2ux8272ux521bux5efaux7ec7ux547dux4e09ux95ee}
+
+角色不是``构建''出来的，而是\textbf{从未来回望时浮现的轮廓}。\\
+请每位叙述者\textbf{手写}回答以下三问------答案将成为你角色的``时间锚点''。
+
+\subsubsection{\texorpdfstring{1. 光核（Lumen）
+}{1. 光核（Lumen） }}\label{1-ux5149ux6838lumen}
+
+\begin{quote}
+\emph{``你已看见自己生命中最明亮的一刻------它为何明亮？''}
+\end{quote}
+
+示例：
+
+\begin{quote}
+\emph{``她踮脚把野花插在我耳后，说`妈妈像春天'。''}\\
+\emph{``化疗结束那天，他煮糊了粥，我们笑到咳嗽。''}
+\end{quote}
+
+\textbf{作用}：当角色濒临放弃，可引用光核重获 1 点环视力。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{2. 重锚（Anchor）
+}{2. 重锚（Anchor） }}\label{2-ux91cdux951aanchor}
+
+\begin{quote}
+\emph{``你已看见自己生命中最沉重的一刻------你仍选择走向它吗？''}
+\end{quote}
+
+示例：
+
+\begin{quote}
+\emph{``手术灯亮起前，她握着我的手问：`会疼吗？' 我说`不会'。''}\\
+\emph{``离婚协议签字时，窗外玉兰正落，像一场慢镜头的雪。''}
+\end{quote}
+
+\textbf{规则}：
+
+\begin{quote}
+\begin{itemize}
+\item
+  此事件\textbf{必须}在团中发生（引导者确保其浮现）
+\item
+  回避它将导致「目的偏移」惩罚（见\hyperref[-ux6838ux5fc3ux673aux5236ux53ccux8f68ux884cux8fdb]{核心机制}）
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{3. 初语（First Word）
+}{3. 初语（First Word） }}\label{3-ux521dux8bedfirst-word}
+
+\begin{quote}
+\emph{``若语言能重塑现实，你愿为所爱之人写下怎样的第一句话？''}
+\end{quote}
+
+要求：
+
+\begin{quote}
+\begin{itemize}
+\item
+  1 个完整句子
+\item
+  \textbf{必须以 ``我已看见\ldots\ldots'' 开头}
+\item
+  聚焦\textbf{自身感知与关系}，非命令他人
+\end{itemize}
+\end{quote}
+
+示例：
+
+\begin{quote}
+\emph{``我已看见你在雨中转身，伞沿滴落的水珠里，有我们未曾说出的原谅。''}\\
+\emph{``我已看见十年后，你教孩子唱那首我哄你入睡的歌，调子全跑了。''}
+\end{quote}
+
+\textbf{作用}：见\hyperref[-ux8bedux8a00ux5373ux4eeaux5f0fux521dux8bedux7cfbux7edf]{初语系统}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{▶ 角色卡模板（建议 8×12 cm
+卡片）}\label{ux25b6-ux89d2ux8272ux5361ux6a21ux677fux5efaux8bae-8uxd712-cm-ux5361ux7247}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[你的名字，或“母亲”/“医生”/“姐姐”……]}
+
+\NormalTok{● 光核：……}
+\NormalTok{◎ 重锚：……}
+\NormalTok{◎ 初语：……}
+\NormalTok{（环视力：●●●）}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+提示：角色名可用第二人称``你''，强化代入感------\\
+\emph{你，守夜人；你，未寄出的信；你，融化的糖}。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍
+核心机制：双轨行进}\label{ux258d-ux6838ux5fc3ux673aux5236ux53ccux8f68ux884cux8fdb}
+
+时间不是线，而是环。\\
+每轮行动，你同步存在于两条轨道：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+轨道 & 名称 & 操作 & 示例 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\vtop{\hbox{\strut \textbf{线性轨}}\hbox{\strut （The Path）}} &
+``我正在经历\ldots\ldots'' & 描述当下言行（符合人类因果） &
+\emph{``我伸手，想擦去她眼角的泪。''} \\
+\vtop{\hbox{\strut \textbf{环形轨}}\hbox{\strut （The Circle）}} &
+``我早已看见\ldots\ldots'' &
+\vtop{\hbox{\strut 插入一段\textbf{已完成的未来记忆}}\hbox{\strut （必须用过去时；每轮限
+1 次）}} &
+\emph{``我记得那滴泪落在你手背，十年后我仍记得它的温度。''} \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{设计意图}：环形轨不是``预知''，而是``记忆''------因对七肢桶而言，未来与过去同样真实。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{▶ 目的骰（Telos
+Dice）检定流程}\label{ux25b6-ux76eeux7684ux9ab0telos-diceux68c0ux5b9aux6d41ux7a0b}
+
+\textbf{仅当选择有代价时检定}（非所有对话都需要！）。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{宣告目的与方法}
+
+  \begin{quote}
+  \emph{``我的目的是 \textbf{\_\_}，因此我此刻选择 \textbf{\_\_}。''}
+
+  目的 ≠ 情绪（如``让她开心''）\\
+  目的 = \textbf{终极意义}（如``让她知道爱不必完美''）
+
+  方法 ≠ 动作（如``说`我爱你'\,''）\\
+  方法 = \textbf{具体姿态}（如``把草莓糖放回她口袋，不说破''）
+  \end{quote}
+\item
+  \textbf{掷 3d6}，查表：
+\end{enumerate}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+总和 & 结果 & 引导者应做 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{3--8} & \vtop{\hbox{\strut \textbf{环闭合}}\hbox{\strut （Circle
+Closes）}} &
+行动成功；\textbf{叙述者必须立即补全一条新记忆}（过去时），并 +1
+环视力 \\
+\textbf{9--12} &
+\vtop{\hbox{\strut \textbf{路径延续}}\hbox{\strut （Path Continues）}} &
+\vtop{\hbox{\strut 行动部分成功；\textbf{引导者提议 1
+个代价}：}\hbox{\strut • 失去 1 环视力}\hbox{\strut •
+重锚提前显现征兆}\hbox{\strut • 光核暂时模糊（本轮不可用）}} \\
+\textbf{13--18} &
+\vtop{\hbox{\strut \textbf{目的偏移}}\hbox{\strut （Telos Drifts）}} &
+行动失败；\textbf{引导者揭示一个未预见的未来片段}（30
+秒内口述），常含苦涩真相 \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{关键原则}
+
+\begin{itemize}
+\item
+  高骰 ≠ 好事：18
+  可能意味着``你终于说出`我爱你'------却在她已听不见的病床前''
+\item
+  检定不问``能否做到''，而问``\textbf{是否愿承担其意义}''
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍
+语言即仪式：初语系统}\label{ux258d-ux8bedux8a00ux5373ux4eeaux5f0fux521dux8bedux7cfbux7edf}
+
+语言不是工具，而是\textbf{重塑现实的仪式}。
+
+\subsubsection{✦ 环视力（Circular
+Sight）}\label{ux2726-ux73afux89c6ux529bcircular-sight}
+
+\begin{itemize}
+\item
+  起始：每人 \textbf{3 点}（●●●）
+\item
+  \textbf{获取}：
+
+  \begin{itemize}
+  \item
+    主动接纳苦涩记忆（不辩解/转移），+1
+  \item
+    用初语促成他人「环闭合」，+1
+  \end{itemize}
+\item
+  \textbf{消耗}：见下表
+\end{itemize}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+行动 & 消耗 & 效果 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{启动初语} & 1 点 &
+\vtop{\hbox{\strut 写下你的初语句（必须手写/打字），依内容触发：}\hbox{\strut •
+描述\textbf{未发生}之事 → 成为未来记忆库条目}\hbox{\strut •
+描述\textbf{正发生}之事 → 重掷 1 枚骰}\hbox{\strut •
+描述\textbf{已发生却未被承认}之事 → 全体静默 1 分钟，共同补全细节}} \\
+\textbf{重写偏移} & 2 点 &
+\vtop{\hbox{\strut 将一次「目的偏移」的未来片段，改写为：}\hbox{\strut \emph{``我早已选择如此。''}
+→ 转为「环闭合」，并获得该记忆}} \\
+\end{longtable}
+}
+
+\subsubsection{✦
+初语使用守则}\label{ux2726-ux521dux8bedux4f7fux7528ux5b88ux5219}
+
+\begin{itemize}
+\item
+  不可命令他人行为（\emph{``我已看见你原谅我''}）
+\item
+  必须聚焦\textbf{自身感知与关系}（\emph{``我已看见你转身时，风掀起你衣角像一只飞走的鸟''}）
+\item
+  一旦写下，\textbf{即成为世界事实}------引导者须将其编织进后续叙事
+\end{itemize}
+
+\begin{quote}
+\textbf{场景示例}\\
+\emph{情境：女儿坚持独自旅行，你欲阻拦。}\\
+你说：``我的目的是让她知道家永远等她，因此我此刻选择把熊塞进她手心。''\\
+掷骰：9 → 路径延续\\
+引导者：``她收下熊，但低声说：`妈，别拍照。'\,''（代价：你忍住没举起手机）\\
+你消耗 1 环视力，写下初语：\\
+\emph{``我已看见十年后，她抱着这熊，教自己的孩子唱那首你哄她入睡的歌。''}\\
+→ GM 描述：她背包侧袋露出熊的一只脚，毛已磨白。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍ 引导者之艺}\label{ux258d-ux5f15ux5bfcux8005ux4e4bux827a}
+
+你不是``掌控者''，而是\textbf{时间织工}（Weaver of Time）。
+
+\subsubsection{✦
+三节点结构（必用）}\label{ux2726-ux4e09ux8282ux70b9ux7ed3ux6784ux5fc5ux7528}
+
+每场团围绕三个\textbf{时间锚点}展开：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+节点 & 引导者准备 & 叙述者体验 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{初遇之日} & \vtop{\hbox{\strut 一个平凡场景 +
+一个微小异常}\hbox{\strut （例：钟停了 / 茶凉得快 /
+孩子问``时间有味道吗？''）}} & 在未知中行动，但环形轨已有模糊闪回 \\
+\textbf{裂隙之时} & 一次未说出口的话 / 一个被误解的选择 &
+重锚事件发生；光核首次受挑战 \\
+\textbf{终语之刻} &
+\vtop{\hbox{\strut \textbf{开场即告知所有人结局场景}}\hbox{\strut （例：``一年后，你在她空房间整理遗物，窗台上有半块融化的草莓糖''）}}
+& 所有行动朝此汇聚；终局不是终点，而是理解的起点 \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{开场仪式}：\\
+全体闭眼 1 分钟，回想：\\
+\emph{``你生命中，哪一刻让你觉得------即使知道结局，仍愿重来一遍？''}\\
+睁眼后，每人轻声说一个词（不解释）。这些词将成为本场「世界基调」。
+\end{quote}
+
+\subsubsection{✦
+当玩家问``未来会怎样？''}\label{ux2726-ux5f53ux73a9ux5bb6ux95eeux672aux6765ux4f1aux600eux6837}
+
+正确回应：
+
+\begin{quote}
+\emph{``你已看见它------现在，你想如何走向它？''}\\
+然后递纸笔：\emph{``写下你记忆中的一个细节。''}
+\end{quote}
+
+禁止：
+
+\begin{itemize}
+\item
+  隐藏结局
+\item
+  用骰子逃避哲学重量(灌铅)
+\end{itemize}
+
+\subsubsection{✦
+团结束仪式}\label{ux2726-ux56e2ux7ed3ux675fux4eeaux5f0f}
+
+请所有人写下：
+
+\begin{quote}
+\emph{``若重来一次，我仍会选择 \textbf{\_\_}。''}\\
+收集纸条，不读出------封存，或焚于静默。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍
+附录：快速参考卡}\label{ux258d-ux9644ux5f55ux5febux901fux53c2ux8003ux5361}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{【掷骰流程】}
+\NormalTok{1. 说：“我的目的是…，因此我选择…”}
+\NormalTok{2. 掷 3d6 →}
+\NormalTok{   3–8 ◎ 环闭合：成功 + 补记忆 +1环视力}
+\NormalTok{   9–12 ● 路径延续：成功但付代价}
+\NormalTok{   13–18 目的偏移：失败 + 揭示苦涩未来}
+
+\NormalTok{【初语】}
+\NormalTok{{-} 花1环视力，写“我已看见……”}
+\NormalTok{{-} 未发生 → 成记忆}
+\NormalTok{{-} 正发生 → 重掷1骰}
+\NormalTok{{-} 已发生未认 → 静默1分钟}
+
+\NormalTok{【环视力】}
+\NormalTok{{-} 起始3}
+\NormalTok{{-} 接纳痛苦 +1}
+\NormalTok{{-} 重写偏移需2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{▍ 许可与致谢}\label{ux258d-ux8bb8ux53efux4e0eux81f4ux8c22}
+
+\begin{itemize}
+\item
+  \textbf{文本许可}：\href{https://creativecommons.org/licenses/by-sa/4.0/}{CC
+  BY-SA 4.0}\\
+  → 你可自由分享、改编，只需：\\
+  (1) 署名原作者（例：\emph{Based on ``Heptapod Sight'' by
+  hsiangnianian}）\\
+  (2) 以相同许可发布衍生作品
+\item
+  \textbf{特别致谢}：
+
+  \begin{itemize}
+  \item
+    Ted Chiang，《你一生的故事》------时间、语言与爱的永恒叩问
+  \item
+    Emily Care Boss, \emph{The White Box} ------ 实验性 RPG 设计的灯塔
+  \item
+    所有敢于在已知结局中仍选择开始的人
+  \end{itemize}
+\end{itemize}
+
+\begin{quote}
+\begin{quote}
+愿你在环形时间中，找到线性行走的勇气。\\
+------ hsiangnianian, 2025
+\end{quote}
+\end{quote}
+
+\end{document}
